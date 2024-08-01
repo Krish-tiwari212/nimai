@@ -19,8 +19,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar"
 import { useState } from "react"
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-
+import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -29,7 +29,9 @@ const formSchema = z.object({
   lastName: z.string().min(2, {
     message: "Last name must be at least 2 characters.",
   }),
-  dob: z.string(),
+  dob: z.date({
+    required_error: "A date of birth is required.",
+  }),
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
@@ -38,39 +40,17 @@ const formSchema = z.object({
   }),
 })
 
-export function DatePicker({ date, setDate }) {
-    return (
-      <Popover>
-        <PopoverTrigger asChild>
-          <Button
-            variant={"outline"}
-            className="w-full justify-start text-left font-normal"
-          >
-            <CalendarIcon className="mr-2 h-4 w-4" />
-            {date ? format(date, "PPP") : <span>Pick a date</span>}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto p-0">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={setDate}
-            initialFocus
-          />
-        </PopoverContent>
-      </Popover>
-    )
-}
 
 export function ChildDetailsForm() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
   })
 
   const onSubmit = (data) => {
-    // handle form submission
+    console.log(data);
+    router.push("/plan");
   }
-  const [dob, setDob] = useState(null);
   return (
     <Card className="h-[60vh] z-20 w-[35rem] rounded-3xl relative -mt-5 -ml-5 border-2 border-black">
       <ScrollArea className="h-[57vh] rounded-3xl">
@@ -108,13 +88,41 @@ export function ChildDetailsForm() {
                 control={form.control}
                 name="dob"
                 render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>Date of Birth</FormLabel>
-                        <FormControl>
-                            <DatePicker date={dob} setDate={setDob} />
-                        </FormControl>
-                        <FormMessage />
-                    </FormItem>
+                    <FormItem className="flex flex-col">
+                  <FormLabel>Date of Birth</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-full pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <FormMessage />
+                </FormItem>
                 )}
             />
             <FormField

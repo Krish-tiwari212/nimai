@@ -28,7 +28,7 @@ export default function Home() {
     return () => clearTimeout(timer)
   }, [])
   return (
-    <main className="min-h-screen p-12 bg-[#304330] relative overflow-clip">
+    <main className="min-h-screen py-12 bg-[#304330] relative overflow-clip">
       <div className="px-44">
         <Image src={logo} width={200} alt="logo" />
         <div className="px-7 pt-2">
