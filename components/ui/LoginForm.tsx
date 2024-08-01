@@ -8,6 +8,9 @@ const LoginForm = () => {
   const [selectedtitle,setSelectedtitle]=useState<string>("");
   const [result, setResult] = useState<resultinterface>({role:""});
 
+  useEffect(()=>{
+    console.log(result)
+  },[result,setResult])
 
   return (
     <div className="w-[90%] h-[55%] mx-auto relative top-[20%] z-30 sm:w-[60%] sm:h-[90%] sm:right-[16%] lg:right-[20%] sm:top-[5%] lg:w-[50%] xl:w-[40%] xl:right-[24%] xl:h-[92%]">
@@ -39,7 +42,7 @@ const LoginForm = () => {
         {selectedtitle ? (
           <button
             onClick={() => {
-              console.log(setResult({ role: selectedtitle }));
+              setResult({ role: selectedtitle });
             }}
             className=" bg-[#28B925] text-white py-2 px-6 text-md w-[60%] mx-auto rounded-lg mt-12 ml-16 md:ml-20 xl:text-[1.5vw] xl:ml-24 relative"
           >
