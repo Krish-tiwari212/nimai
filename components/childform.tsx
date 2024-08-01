@@ -72,7 +72,7 @@ export function ChildDetailsForm() {
   }
   const [dob, setDob] = useState(null);
   return (
-    <Card className="h-[60vh] z-20 w-[35rem] rounded-3xl pl-5 relative -mt-5 -ml-5 border-2 border-black">
+    <Card className="h-[60vh] z-20 w-[35rem] rounded-3xl relative -mt-5 -ml-5 border-2 border-black">
       <ScrollArea className="h-[57vh] rounded-3xl">
       <CardContent className="mt-10">
         <Form {...form}>
@@ -82,7 +82,7 @@ export function ChildDetailsForm() {
               name="firstName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>First Name</FormLabel>
+                  <FormLabel>Child's First Name</FormLabel>
                   <FormControl>
                     <Input placeholder="John" {...field} />
                   </FormControl>
@@ -95,7 +95,7 @@ export function ChildDetailsForm() {
               name="lastName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Last Name</FormLabel>
+                  <FormLabel>Child's Last Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Doe" {...field} />
                   </FormControl>
