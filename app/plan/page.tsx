@@ -41,7 +41,7 @@ export default function Child() {
       </div>
         <div className="flex mt-16 w-full justify-center space-x-24 flex-wrap">
         <div className="bg-black rounded-3xl p-3 z-10">
-          <Card className="h-[60vh] z-20 w-[70vw] rounded-3xl px-32 relative -mt-5 -ml-5 border-2 border-black">
+          <Card className="h-[36rem] z-20 w-[70vw] rounded-3xl px-32 relative -mt-5 -ml-5 border-2 border-black">
             <CardHeader>
               <Image src={strips} alt="strips" className="absolute left-[-2rem] top-2"/>
             </CardHeader>
@@ -65,7 +65,17 @@ export default function Child() {
                 </div>
                </div>
                <div className="flex justify-end w-full">
-               <Button className="bg-green-600 px-16 mt-14 hover:bg-green-400">Next</Button> 
+               <Button
+                  className="bg-green-600 px-16 mt-14 hover:bg-green-400 snipcart-add-item"
+                  data-item-id="plan-59.99"
+                  data-item-name="Learning Plan"
+                  data-item-price="59.99"
+                  data-item-url="/"
+                  data-item-description="Start preparing for 11+ grammar and private school exams."
+                  data-item-image="/avatar1.png"
+                >
+                  Next
+                </Button> 
                </div>
             </CardContent>
           </Card>

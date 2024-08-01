@@ -47,12 +47,12 @@ export function ChildDetailsForm() {
     resolver: zodResolver(formSchema),
   })
 
-  const onSubmit = (data) => {
+const onSubmit = (data: FormData) => {
     console.log(data);
     router.push("/plan");
-  }
+}
   return (
-    <Card className="h-[60vh] z-20 w-[35rem] rounded-3xl relative -mt-5 -ml-5 border-2 border-black">
+    <Card className="h-[36rem] z-20 w-[35rem] rounded-3xl relative -mt-5 -ml-5 border-2 border-black">
       <ScrollArea className="h-[57vh] rounded-3xl">
       <CardContent className="mt-10">
         <Form {...form}>
