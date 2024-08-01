@@ -47,7 +47,7 @@ export function ChildDetailsForm() {
     resolver: zodResolver(formSchema),
   })
 
-const onSubmit = (data: FormData) => {
+const onSubmit = (data: any) => {
     console.log(data);
     router.push("/plan");
 }
@@ -56,7 +56,7 @@ const onSubmit = (data: FormData) => {
       <ScrollArea className="h-[57vh] rounded-3xl">
       <CardContent className="mt-10">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
               name="firstName"
