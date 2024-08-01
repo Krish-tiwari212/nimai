@@ -46,7 +46,7 @@ const LoginForm = () => {
             Join as a {selectedtitle}
           </button>
         ) : (
-          <button className="bg-[#D9D9D9] relative text-white py-2 px-6 text-md w-[60%] mx-auto rounded-lg mt-12 ml-16 md:ml-20 xl:text-[1.5vw] xl:ml-24 ">
+          <button onClick={()=>{window.alert("Please select a role first")}} className="bg-[#D9D9D9] relative text-white py-2 px-6 text-md w-[60%] mx-auto rounded-lg mt-12 ml-16 md:ml-20 xl:text-[1.5vw] xl:ml-24 ">
             Create an account
           </button>
         )}
