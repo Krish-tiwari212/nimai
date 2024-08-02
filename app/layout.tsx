@@ -25,7 +25,6 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <script async src="https://cdn.snipcart.com/themes/v3.2.0/default/snipcart.js"></script>
-        <div hidden id="snipcart" data-api-key="N2NjYzdiZDMtMTA4OC00MWYyLWIwYzQtYTZkY2ZmNmU1YTUwNjM4NTgxMTc3Njk0MzEyNTE1"></div>
       </body>
     </html>
   );

@@ -81,6 +81,7 @@ export default function Child() {
           </Card>
         </div>
         </div>
+        <div hidden id="snipcart" data-api-key="N2NjYzdiZDMtMTA4OC00MWYyLWIwYzQtYTZkY2ZmNmU1YTUwNjM4NTgxMTc3Njk0MzEyNTE1"></div>
     </main>
   );
 }
